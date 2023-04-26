@@ -17,7 +17,8 @@ services:
       - ./etl/extract/create-source-tables.sql:/docker-entrypoint-initdb.d/create-source-tables.sql
       - ./etl/extract/import-source-files.sql:/docker-entrypoint-initdb.d/import-source-files.sql
 
-      - ./etl/transform/create-transformed-tables.sql:/docker-entrypoint-initdb.d/create-transformed-tables.sql
+      - ./etl/transform/create-transformed-table.sql:/docker-entrypoint-initdb.d/create-transformed-table.sql
+      - ./etl/transform/populate-transformed-table.sql:/docker-entrypoint-initdb.d/populate-transformed-table.sql
 
       - ./etl/load/search-modify-load.sql:/docker-entrypoint-initdb.d/search-modify-load.sql
       - ./etl/load/bi-queries.sql:/docker-entrypoint-initdb.d/bi-queries.sql

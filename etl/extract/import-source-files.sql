@@ -68,9 +68,9 @@ WITH (FORMAT csv, HEADER true, DELIMITER ';');
 
 COPY empresas_nivel_atividade (
     cnpj,
-    nivel_atividadeempresas_nivel_atividade
+    nivel_atividade
 ) FROM '/data-source/empresas_nivel_atividade.csv'
-WITH (FORMAT csv, HEADER true, NULL '', FORCE_NULL (nivel_atividadeempresas_nivel_atividade), DELIMITER ';');
+WITH (FORMAT csv, HEADER true, NULL '', FORCE_NULL (nivel_atividade), DELIMITER ';');
 
 COPY empresas_porte (
     cnpj,

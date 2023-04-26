@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS empresas_bolsa (
 CREATE TABLE IF NOT EXISTS empresas_nivel_atividade (
   id SERIAL PRIMARY KEY,
   cnpj VARCHAR(18),
-  nivel_atividadeempresas_nivel_atividade VARCHAR(15)
+  nivel_atividade VARCHAR(15)
 );
 CREATE INDEX IF NOT EXISTS empresas_nivel_atividade_cnpj_idx ON empresas_nivel_atividade (cnpj);
 
