@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: cnpj_manager
+    ports:
+      - "5432:5432"
+    networks:
+      - cnpjmanager
+    volumes:
+      - ./data-source:/data-source/
+
+      - ./etl/extract/create-source-tables.sql:/docker-entrypoint-initdb.d/create-source-tables.sql
+      - ./etl/extract/import-source-files.sql:/docker-entrypoint-initdb.d/import-source-files.sql
+
+      - ./etl/transform/create-transformed-tables.sql:/docker-entrypoint-initdb.d/create-transformed-tables.sql
+
+      - ./etl/load/search-modify-load.sql:/docker-entrypoint-initdb.d/search-modify-load.sql
+      - ./etl/load/bi-queries.sql:/docker-entrypoint-initdb.d/bi-queries.sql
+
+networks:
+    cnpjmanager:
+      driver: bridge
