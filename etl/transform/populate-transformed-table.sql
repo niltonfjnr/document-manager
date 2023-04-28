@@ -115,3 +115,11 @@ INSERT INTO empresas (
     optante_simei
 )
 SELECT * FROM empresas_view;
+
+
+
+-- FILL FOREIGN KEY VALUES
+UPDATE cotacoes_bolsa cb
+SET empresa_id = em.id
+FROM empresas em
+WHERE cb.cd_acao_rdz = em.cd_acao_rdz;

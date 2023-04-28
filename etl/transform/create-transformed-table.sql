@@ -45,3 +45,10 @@ CREATE TABLE IF NOT EXISTS empresas (
 );
 CREATE INDEX IF NOT EXISTS empresas_cnpj_idx ON empresas (cnpj);
 CREATE INDEX IF NOT EXISTS empresas_cd_acao_idx ON empresas (cd_acao_rdz);
+
+
+
+-- UPDATE cotacoes_bolsa ADDING COMPANIES FOREIGN KEY COLUMN
+ALTER TABLE cotacoes_bolsa
+    ADD COLUMN IF NOT EXISTS empresa_id INTEGER 
+    REFERENCES empresas (id);
