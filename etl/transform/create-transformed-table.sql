@@ -1,84 +1,47 @@
-CREATE TABLE IF NOT EXISTS transformed_table (
+CREATE TABLE IF NOT EXISTS empresas (
     id SERIAL PRIMARY KEY,
-    cotacoes_bolsa_id SERIAL,
-    cotacoes_bolsa_tp_reg VARCHAR(50),
-    cotacoes_bolsa_dt_pregao VARCHAR(50),
-    cotacoes_bolsa_cd_bdi VARCHAR(50),
-    cotacoes_bolsa_cd_acao VARCHAR(50),
-    cotacoes_bolsa_tp_merc VARCHAR(50),
-    cotacoes_bolsa_nm_empresa_rdz VARCHAR(50),
-    cotacoes_bolsa_especi VARCHAR(50),
-    cotacoes_bolsa_prazot VARCHAR(50),
-    cotacoes_bolsa_moeda_ref VARCHAR(50),
-    cotacoes_bolsa_vl_abertura VARCHAR(50),
-    cotacoes_bolsa_vl_maximo VARCHAR(50),
-    cotacoes_bolsa_vl_minimo VARCHAR(50),
-    cotacoes_bolsa_vl_medio VARCHAR(50),
-    cotacoes_bolsa_vl_fechamento VARCHAR(50),
-    cotacoes_bolsa_vl_mlh_oft_compra VARCHAR(50),
-    cotacoes_bolsa_vl_mlh_oft_venda VARCHAR(50),
-    cotacoes_bolsa_vl_ttl_neg VARCHAR(50),
-    cotacoes_bolsa_qt_tit_neg VARCHAR(50),
-    cotacoes_bolsa_vl_volume VARCHAR(50),
-    cotacoes_bolsa_vl_exec_opc VARCHAR(50),
-    cotacoes_bolsa_in_opc VARCHAR(50),
-    cotacoes_bolsa_dt_vnct_opc VARCHAR(50),
-    cotacoes_bolsa_ft_cotacao VARCHAR(50),
-    cotacoes_bolsa_vl_exec_moeda_corrente VARCHAR(50),
-    cotacoes_bolsa_cd_isin VARCHAR(50),
-    cotacoes_bolsa_cd_acao_rdz VARCHAR(50),
-    cotacoes_bolsa_created_at VARCHAR(50),
-    cotacoes_bolsa_updated_at VARCHAR(50),
-    cotacoes_bolsa___index_level_0__ VARCHAR(50),
 
-    df_empresas_id SERIAL,
-    df_empresas_cnpj VARCHAR(18),
-    df_empresas_dt_abertura VARCHAR(50),
-    df_empresas_empresa_matriz BOOLEAN,
-    df_empresas_cd_cnae_principal INTEGER,
-    df_empresas_de_cnae_principal VARCHAR(200),
-    df_empresas_de_ramo_atividade VARCHAR(50),
-    df_empresas_de_setor VARCHAR(50),
-    df_empresas_endereco_cep VARCHAR(20),
-    df_empresas_endereco_municipio VARCHAR(50),
-    df_empresas_endereco_uf VARCHAR(50),
-    df_empresas_endereco_regiao VARCHAR(50),
-    df_empresas_endereco_mesorregiao VARCHAR(50), 
-    df_empresas_situacao_cadastral VARCHAR(15),
+    -- MERGED CNPJ
+    cnpj VARCHAR(14),
 
-    empresas_bolsa_id SERIAL,
-    empresas_bolsa_cd_acao_rdz VARCHAR(20),
-    empresas_bolsa_nm_empresa VARCHAR(50),
-    empresas_bolsa_setor_economico VARCHAR(50),
-    empresas_bolsa_subsetor VARCHAR(100),
-    empresas_bolsa_segmento VARCHAR(100),
-    empresas_bolsa_segmento_b3 VARCHAR(50),
-    empresas_bolsa_nm_segmento_b3 VARCHAR(50),
-    empresas_bolsa_cd_acao VARCHAR(50),
-    empresas_bolsa_tx_cnpj VARCHAR(18),
-    empresas_bolsa_vl_cnpj VARCHAR(18),
-    empresas_bolsa_created_at VARCHAR(27),
-    empresas_bolsa_updated_at VARCHAR(27),
+    -- empresas_bolsa
+    cd_acao_rdz VARCHAR(20),
+    -- created_at VARCHAR(27),
+    -- updated_at VARCHAR(27),
+    nm_empresa VARCHAR(50),
+    setor_economico VARCHAR(50),
+    subsetor VARCHAR(100),
+    segmento VARCHAR(100),
+    segmento_b3 VARCHAR(50),
+    nm_segmento_b3 VARCHAR(50),
+    cd_acao VARCHAR(50),
 
-    empresas_nivel_atividade_id SERIAL,
-    empresas_nivel_atividade_cnpj VARCHAR(18),
-    empresas_nivel_atividade_nivel_atividade VARCHAR(15),
+    -- df_empresas
+    dt_abertura VARCHAR(50),
+    empresa_matriz BOOLEAN,
+    cd_cnae_principal INTEGER,
+    de_cnae_principal VARCHAR(200),
+    de_ramo_atividade VARCHAR(50),
+    de_setor VARCHAR(50),
+    endereco_cep VARCHAR(20),
+    endereco_municipio VARCHAR(50),
+    endereco_uf VARCHAR(50),
+    endereco_regiao VARCHAR(50),
+    endereco_mesorregiao VARCHAR(50), 
+    situacao_cadastral VARCHAR(15),
 
-    empresas_porte_id SERIAL,
-    empresas_porte_cnpj VARCHAR(18),
-    empresas_porte_empresa_porte VARCHAR(15),
+    -- empresas_nivel_atividade
+    nivel_atividade VARCHAR(15),
 
-    empresas_saude_tributaria_id SERIAL,
-    empresas_saude_tributaria_cnpj VARCHAR(18),
-    empresas_saude_tributaria_saude_tributaria VARCHAR(15),
+    -- empresas_porte
+    empresa_porte VARCHAR(15),
 
-    empresas_simples_id SERIAL,
-    empresas_simples_cnpj VARCHAR(18),
-    empresas_simples_optante_simples BOOLEAN,
-    empresas_simples_optante_simei BOOLEAN
+    -- empresas_saude_tributaria
+    saude_tributaria VARCHAR(15),
+
+    -- empresas_simples
+    optante_simples BOOLEAN,
+    optante_simei BOOLEAN
 );
-CREATE INDEX IF NOT EXISTS transformed_table_empresas_simples_cnpj_idx ON transformed_table (empresas_simples_cnpj);
-CREATE INDEX IF NOT EXISTS transformed_table_empresas_saude_tributaria_cnpj_idx ON transformed_table (empresas_saude_tributaria_cnpj);
-CREATE INDEX IF NOT EXISTS transformed_table_empresas_porte_cnpj_idx ON transformed_table (empresas_porte_cnpj);
-CREATE INDEX IF NOT EXISTS transformed_table_empresas_nivel_atividade_cnpj_idx ON transformed_table (empresas_nivel_atividade_cnpj);
-CREATE INDEX IF NOT EXISTS transformed_table_df_empresas_cnpj_idx ON transformed_table (df_empresas_cnpj);
+CREATE INDEX IF NOT EXISTS empresas_cnpj_idx ON empresas (cnpj);
+CREATE INDEX IF NOT EXISTS empresas_cd_acao_idx ON empresas (cd_acao_rdz);

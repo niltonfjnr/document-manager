@@ -25,9 +25,9 @@ dt_vnct_opc VARCHAR(50),
 ft_cotacao VARCHAR(50),
 vl_exec_moeda_corrente VARCHAR(50),
 cd_isin VARCHAR(50),
-cd_acao_rdz VARCHAR(50),
-created_at VARCHAR(50),
-updated_at VARCHAR(50),
+cd_acao_rdz VARCHAR(20),
+created_at VARCHAR(27),
+updated_at VARCHAR(27),
 __index_level_0__ VARCHAR(50)
 );
 
