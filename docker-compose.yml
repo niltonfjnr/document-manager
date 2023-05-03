@@ -21,7 +21,6 @@ services:
       - ./etl/transform/populate-transformed-table.sql:/docker-entrypoint-initdb.d/populate-transformed-table.sql
 
       - ./etl/load/search-modify-load.sql:/docker-entrypoint-initdb.d/search-modify-load.sql
-      - ./etl/load/bi-queries.sql:/docker-entrypoint-initdb.d/bi-queries.sql
 
 networks:
     cnpjmanager:
